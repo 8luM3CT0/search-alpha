@@ -80,6 +80,7 @@ function Header () {
           </button>
         ) : (
           <img
+            onClick={() => userCreds.signOut()}
             loading='lazy'
             src='https://lh3.googleusercontent.com/ogw/ADea4I4wtUg3MHCpPxuIczZRSnxCyEQ1LVnaxR6OJtwpOw=s32-c-mo'
             alt=''
