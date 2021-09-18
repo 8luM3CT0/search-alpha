@@ -1,11 +1,11 @@
 //front-end
 import {
-  PhotographIcon,
-  SearchIcon,
-  VideoCameraIcon,
-  NewspaperIcon,
-  DotsHorizontalIcon
+  ShoppingCartIcon,
+  MailIcon,
+  ChatIcon,
+  UserAddIcon
 } from '@heroicons/react/outline'
+import SearchIcon from './SearchIcon'
 //back-end
 import { useEffect } from 'react'
 import { useRouter } from 'next/router'
@@ -91,11 +91,9 @@ function SearchHeader () {
           />
         </div>
         <div className='flex items-center space-x-4'>
-          {/**SearchIcon */}
-          {/**PhotographIcon */}
-          {/**VideoCameraIcon */}
-          {/**NewspaperIcon */}
-          {/**DotsHorizontalIcon */}
+          {/**StoreIcon */}
+          {/**MailIcon */}
+          {/**ChatIcon */}
         </div>
       </div>
       <div
@@ -105,21 +103,23 @@ function SearchHeader () {
       text-white 
       space-x-4'
       >
+        <SearchIcon Icon={MailIcon} title='Mail' />
+        <SearchIcon Icon={ChatIcon} title='Chat' />
+        <SearchIcon Icon={ShoppingCartIcon} title='Store' />
         {!user ? (
-          <button
+          <UserAddIcon
             onClick={signIn}
-            type='submit'
             className='
-            text-gray-800
-            py-2
-            px-6
-            rounded-xl 
-            bg-blue-300
-            active:bg-blue-400
-            active:text-white'
-          >
-            Sign in
-          </button>
+        h-6 
+        md:h-8 
+        text-blue-200 
+        border 
+        border-blue-100
+        active:text-blue-300
+        cursor-pointer
+        rounded-full
+        '
+          />
         ) : (
           <img
             onClick={() => userCreds.signOut()}
