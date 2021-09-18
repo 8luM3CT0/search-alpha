@@ -7,6 +7,7 @@ import {
   DotsHorizontalIcon
 } from '@heroicons/react/outline'
 //back-end
+import { useEffect } from 'react'
 import { useRouter } from 'next/router'
 import { useAuthState } from 'react-firebase-hooks/auth'
 import { userCreds, store } from '../../firebase'
@@ -14,6 +15,26 @@ import { userCreds, store } from '../../firebase'
 function SearchHeader () {
   const router = useRouter()
   const [user] = useAuthState(userCreds)
+
+  const signIn = () => {
+    userCreds.signInWithPopup(provider).catch(alert)
+  }
+
+  useEffect(() => {
+    if (user) {
+      store
+        .collection('users')
+        .doc(user.uid)
+        .set(
+          {
+            email: user.email,
+            photoURL: user.photoURL,
+            displayName: user.displayName
+          },
+          { merge: true }
+        )
+    }
+  }, [user])
 
   return (
     <header
