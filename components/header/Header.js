@@ -27,9 +27,8 @@ function Header () {
         .set(
           {
             email: user.email,
-            lastActive: firebase.firestore.FieldValue.serverTimestamp(),
             photoURL: user.photoURL,
-            displayaName: user.displayName
+            displayName: user.displayName
           },
           { merge: true }
         )
@@ -82,7 +81,7 @@ function Header () {
           <img
             onClick={() => userCreds.signOut()}
             loading='lazy'
-            src='https://lh3.googleusercontent.com/ogw/ADea4I4wtUg3MHCpPxuIczZRSnxCyEQ1LVnaxR6OJtwpOw=s32-c-mo'
+            src={user?.photoURL}
             alt=''
             className='
           h-8 

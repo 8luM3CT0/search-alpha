@@ -1,10 +1,24 @@
 import { SearchIcon } from '@heroicons/react/outline'
 import { MicrophoneIcon } from '@heroicons/react/outline'
 import Head from 'next/head'
+import { useRef } from 'react'
 import Footer from '../components/footer/Footer'
 import Header from '../components/header/Header'
+import { useRouter } from 'next/router'
 
 export default function Home () {
+  const searchRef = useRef(null)
+  const router = useRouter()
+  const search = e => {
+    e.preventDefault()
+
+    const term = searchRef.current.value
+
+    if (!term) return
+
+    router.push(`/search?term=${term}`)
+  }
+
   return (
     <div className='bg-gray-800 overflow-hidden h-screen'>
       <Head>
@@ -62,13 +76,16 @@ export default function Home () {
           '
           />
           <input
+            ref={searchRef}
             type='text'
-            className='focus:outline-none border-0 bg-transparent flex-grow'
+            className='focus:outline-none border-0 bg-transparent flex-grow text-gray-700'
           />
           <MicrophoneIcon className='h-6 ml-3 mr-2' />
         </div>
         <div className='flex mt-10 space-x-4'>
-          <button className='homeBtn'>Search Stuff</button>
+          <button onClick={search} className='homeBtn'>
+            Search Stuff
+          </button>
           <button className='homeBtn'>I'm Feeling Lucky</button>
         </div>
       </form>
