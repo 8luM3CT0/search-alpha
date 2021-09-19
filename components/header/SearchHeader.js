@@ -3,11 +3,12 @@ import {
   ShoppingCartIcon,
   MailIcon,
   ChatIcon,
-  UserAddIcon
+  UserAddIcon,
+  SearchIcon
 } from '@heroicons/react/outline'
-import SearchIcon from './SearchIcon'
+import SearchIcons from './SearchIcons'
 //back-end
-import { useEffect } from 'react'
+import { useEffect, useRef } from 'react'
 import { useRouter } from 'next/router'
 import { useAuthState } from 'react-firebase-hooks/auth'
 import { userCreds, store } from '../../firebase'
@@ -15,6 +16,7 @@ import { userCreds, store } from '../../firebase'
 function SearchHeader () {
   const router = useRouter()
   const [user] = useAuthState(userCreds)
+  const searchInputRef = useRef(null)
 
   const signIn = () => {
     userCreds.signInWithPopup(provider).catch(alert)
@@ -70,7 +72,7 @@ function SearchHeader () {
         </h1>
       </div>
       <div className='flex-col flex-shrink lg:flex-grow space-y-3'>
-        <div
+        <form
           className='
         flex 
         flex-grow
@@ -87,9 +89,10 @@ function SearchHeader () {
         >
           <input
             type='text'
+            value={searchInputRef}
             className='flex-grow border-0 outline-none bg-transparent'
           />
-        </div>
+        </form>
         <div className='flex items-center space-x-4'>
           {/**StoreIcon */}
           {/**MailIcon */}
@@ -103,9 +106,22 @@ function SearchHeader () {
       text-white 
       space-x-4'
       >
-        <SearchIcon Icon={MailIcon} title='Mail' />
-        <SearchIcon Icon={ChatIcon} title='Chat' />
-        <SearchIcon Icon={ShoppingCartIcon} title='Store' />
+        <div onClick={() => router.push('/')} className='searchLinks'>
+          <SearchIcon className='linkIcon' />
+          <h2 className='linkTitle'>Home</h2>
+        </div>
+        <div className='searchLinks'>
+          <MailIcon className='linkIcon' />
+          <h2 className='linkTitle'>Mail</h2>
+        </div>
+        <div className='searchLinks'>
+          <ChatIcon className='linkIcon' />
+          <h2 className='linkTitle'>Chat</h2>
+        </div>
+        <div className='searchLinks'>
+          <ShoppingCartIcon className='linkIcon' />
+          <h2 className='linkTitle'>Store</h2>
+        </div>
         {!user ? (
           <UserAddIcon
             onClick={signIn}

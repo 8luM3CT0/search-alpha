@@ -58,9 +58,9 @@ export default function Home () {
           py-3 
           px-5 
           w-full
-          max-w-md 
-          sm:max-w-xl 
-          lg:max-w-2xl
+          max-w-sm
+          lg:max-w-xl 
+          xl:max-w-2xl
         flex 
         items-center 
         mt-5 

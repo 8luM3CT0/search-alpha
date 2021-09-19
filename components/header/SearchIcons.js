@@ -1,7 +1,7 @@
 //front-end
 //back-end
 
-function SearchIcon ({ Icon, title }) {
+function SearchIcons ({ Icon, title }) {
   return (
     <div
       className='
@@ -34,4 +34,4 @@ function SearchIcon ({ Icon, title }) {
   )
 }
 
-export default SearchIcon
+export default SearchIcons

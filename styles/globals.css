@@ -68,4 +68,29 @@
       active:ring-gray-300
       hover:shadow-md
    }
+
+   .searchLinks{
+      @apply
+      flex 
+        items-center 
+        space-x-2
+        text-blue-200
+        active:text-blue-300
+        cursor-pointer
+   }
+
+   .linkIcon{
+      @apply
+      h-6
+      cursor-pointer
+      hover:opacity-80
+   }
+
+   .linkTitle{
+      @apply
+      hidden 
+      md:inline-flex 
+      md:text-lg 
+      xl:text-xl
+   }
 }  
