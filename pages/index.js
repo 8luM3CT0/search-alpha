@@ -20,7 +20,7 @@ export default function Home () {
   }
 
   return (
-    <div className='bg-gray-800 overflow-hidden h-screen'>
+    <div className='bg-gray-800 h-screen overflow-hidden scrollbar-hide'>
       <Head>
         <title>Nextjs-Search-Engine</title>
         <link rel='icon' href='/favicon.ico' />
@@ -33,7 +33,7 @@ export default function Home () {
       <Header />
       <form
         className='
-      min-h-[100vh] 
+      h-[100vh] 
       flex 
       flex-col 
       items-center 
@@ -80,7 +80,7 @@ export default function Home () {
             type='text'
             className='focus:outline-none border-0 bg-transparent flex-grow text-gray-700'
           />
-          <MicrophoneIcon className='h-6 ml-3 mr-2' />
+          <MicrophoneIcon className='h-6 ml-3 mr-2 cursor-pointer active:text-blue-300' />
         </div>
         <div className='flex mt-10 space-x-4'>
           <button onClick={search} className='homeBtn'>

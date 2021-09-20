@@ -4,7 +4,9 @@ import {
   MailIcon,
   ChatIcon,
   UserAddIcon,
-  SearchIcon
+  SearchIcon,
+  XIcon,
+  MicrophoneIcon
 } from '@heroicons/react/outline'
 import SearchIcons from './SearchIcons'
 //back-end
@@ -17,6 +19,16 @@ function SearchHeader () {
   const router = useRouter()
   const [user] = useAuthState(userCreds)
   const searchInputRef = useRef(null)
+
+  const search = e => {
+    e.preventDefault()
+
+    const term = searchInputRef.current.value
+
+    if (!term) return
+
+    router.push(`/search?term=${term}`)
+  }
 
   const signIn = () => {
     userCreds.signInWithPopup(provider).catch(alert)
@@ -79,7 +91,8 @@ function SearchHeader () {
         bg-gray-300
         items-center 
         py-3 
-        px-5 
+        px-5
+        mr-2 
         w-full 
         max-w-md 
         sm:max-w-2xl 
@@ -89,8 +102,33 @@ function SearchHeader () {
         >
           <input
             type='text'
-            value={searchInputRef}
+            ref={searchInputRef}
             className='flex-grow border-0 outline-none bg-transparent'
+          />
+          <button onClick={search} hidden type='submit' className=''>
+            Search
+          </button>
+          <XIcon
+            className='
+          h-7 
+          sm:mr-3 
+          text-gray-800 
+          cursor-pointer 
+          transition 
+          duration-100 
+          transform 
+          hover:scale-125'
+            onClick={() => (searchInputRef.current.value = '')}
+          />
+          <MicrophoneIcon
+            className='
+            hidden
+            lg:inline-flex
+            linkIcon
+          border-l
+          border-gray-800
+          pl-2
+          '
           />
         </form>
         <div className='flex items-center space-x-4'>
