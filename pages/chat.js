@@ -2,7 +2,7 @@
 import Sidebar from '../components/sidebar/Sidebar'
 import Welcome from '../components/welcome/Welcome'
 //back-end
-function chat () {
+function Chat () {
   return (
     <div className='h-screen bg-gray-800 overflow-hidden flex'>
       {/**Sidebar */}
@@ -13,4 +13,4 @@ function chat () {
   )
 }
 
-export default chat
+export default Chat
