@@ -1,14 +1,17 @@
+//front-end
 import { SearchIcon } from '@heroicons/react/outline'
 import { MicrophoneIcon } from '@heroicons/react/outline'
 import Head from 'next/head'
-import { useRef } from 'react'
 import Footer from '../components/footer/Footer'
 import Header from '../components/header/Header'
+//back-end
+import { useRef, useState } from 'react'
 import { useRouter } from 'next/router'
 
 export default function Home () {
   const searchRef = useRef(null)
   const router = useRouter()
+
   const search = e => {
     e.preventDefault()
 

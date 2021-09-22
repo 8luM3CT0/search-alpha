@@ -2,17 +2,20 @@
 import { DocumentReportIcon, ViewGridIcon } from '@heroicons/react/solid'
 import {
   ShoppingCartIcon,
-  MailIcon,
+  ChatIcon,
   PhotographIcon
 } from '@heroicons/react/outline'
-import Modal from 'react-modal'
+//modal testing
+
 //back-end
 import firebase from 'firebase'
 import { userCreds, provider, store } from '../../firebase'
 import { useAuthState } from 'react-firebase-hooks/auth'
-import { useEffect } from 'react'
+import { useEffect, useState } from 'react'
+import { useRouter } from 'next/router'
 
 function Header () {
+  const router = useRouter()
   const [user] = useAuthState(userCreds)
 
   const signIn = () => {
@@ -57,11 +60,14 @@ function Header () {
       text-white 
       space-x-4'
       >
-        <h1 className='link hidden md:inline-flex'>Mail</h1>
-        <MailIcon className='headerIcons' />
+        <div onClick={() => router.push('/chat')}>
+          <h1 className='link hidden md:inline-flex'>Chat</h1>
+          <ChatIcon className='headerIcons' />
+        </div>
         <h1 className='link hidden md:inline-flex'>Images</h1>
         <PhotographIcon className='headerIcons' />
         <ViewGridIcon className='h-6 md:h-10 cursor-pointer rounded-full hover:bg-gray-500' />
+
         {!user ? (
           <button
             onClick={signIn}
