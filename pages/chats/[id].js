@@ -33,6 +33,6 @@ function ChatArea ({ chat, messages }) {
 
 export default ChatArea
 
-export async function getServerSideProps (context) {
+/**export async function getServerSideProps (context) {
   const ref = store.collection('chats').doc(context.query.id)
-}
+}*/

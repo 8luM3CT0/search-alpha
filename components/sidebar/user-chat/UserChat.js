@@ -16,7 +16,7 @@ function UserChat ({ id, users }) {
   const receiverPhoto = receiverSnapshot?.docs?.[0]?.data()
 
   const startChat = () => {
-    router.push(`/chat/${id}`)
+    router.push(`/chats/${id}`)
   }
 
   return (
