@@ -15,8 +15,13 @@ function UserChat ({ id, users }) {
   const receiver = getReceiver(users, user)
   const receiverPhoto = receiverSnapshot?.docs?.[0]?.data()
 
+  const startChat = () => {
+    router.push(`/chat/${id}`)
+  }
+
   return (
     <div
+      onClick={startChat}
       className='
         py-6
         px-3

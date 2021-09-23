@@ -14,7 +14,7 @@ function Search ({ results }) {
   console.log(results)
 
   return (
-    <div className='bg-gray-800 scrollbar-hide'>
+    <div className='bg-gray-800 flex-1 scrollbar-hide'>
       <Head>
         <title>{router.query.term} - AlphaSearch</title>
       </Head>

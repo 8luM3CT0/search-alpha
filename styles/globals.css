@@ -93,4 +93,13 @@
       md:text-lg 
       xl:text-xl
    }
+
+   .chatIcon{
+      @apply
+      h-8
+      lg:h-12
+      text-blue-400
+      hover:text-blue-300
+      cursor-pointer
+   }
 }  
