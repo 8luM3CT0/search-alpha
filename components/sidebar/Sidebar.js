@@ -1,5 +1,5 @@
 //front-end
-import { ChevronLeftIcon, UserAddIcon } from '@heroicons/react/outline'
+import { ChatIcon, SearchIcon, UserAddIcon } from '@heroicons/react/outline'
 //back-end
 import { useRouter } from 'next/router'
 import { userCreds, store } from '../../firebase'
@@ -68,15 +68,33 @@ function Sidebar () {
             border-blue-300
             '
       >
-        <ChevronLeftIcon
+        <div
           className='
+        flex
+        items-center
+        space-x-4
+        '
+        >
+          <SearchIcon
+            className='
+        text-blue-100 
+        h-6 
+        lg:h-8 
+        active:text-blue-200 
+        cursor-pointer
+        '
+            onClick={() => router.push('/')}
+          />
+          <ChatIcon
+            className='
           text-blue-100 
           h-6 
           lg:h-8 
           active:text-blue-200 
           cursor-pointer'
-          onClick={() => router.push('/')}
-        />
+            onClick={() => router.push('/chat')}
+          />
+        </div>
         <h2
           className='
         text-xl 

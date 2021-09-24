@@ -96,10 +96,20 @@
 
    .chatIcon{
       @apply
-      h-8
-      lg:h-12
+      hidden
+      lg:inline-flex
+      h-12
       text-blue-400
       hover:text-blue-300
       cursor-pointer
+   }
+
+   .chatInputIcon{
+      @apply
+      h-6
+      text-blue-400
+      hover:text-blue-300
+      cursor-pointer
+      lg:hidden
    }
 }  
