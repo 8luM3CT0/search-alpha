@@ -59,9 +59,11 @@ function SearchHeader () {
     top-0 
     flex 
     items-center 
-    py-5 
-    px-6
-    space-x-5
+    px-3
+    py-3
+    lg:py-5 
+    lg:px-6
+    space-x-3
     lg:justify-evenly
     border-b-2 
     border-gray-600'
@@ -138,11 +140,6 @@ function SearchHeader () {
           '
           />
         </form>
-        <div className='flex items-center space-x-4'>
-          {/**StoreIcon */}
-          {/**MailIcon */}
-          {/**ChatIcon */}
-        </div>
       </div>
       <div
         className='
