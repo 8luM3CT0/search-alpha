@@ -14,6 +14,7 @@ import { useState, useRef } from 'react'
 import { userCreds, store } from '../../firebase'
 import firebase from 'firebase'
 import getReceiver from '../../utils/getReceiver'
+import Message from './Message'
 
 function Feed ({ chat, messages }) {
   const [user] = useAuthState(userCreds)
@@ -25,8 +26,22 @@ function Feed ({ chat, messages }) {
       .collection('users')
       .where('email', '==', getReceiver(chat.users, user))
   )
+  const [messageSnapshot] = useCollection(
+    store
+      .collection('chats')
+      .doc(router.query.id)
+      .collection('messages')
+      .orderBy('timestamp', 'asc')
+  )
   const receiver = receiverSnapshot?.docs?.[0]?.data()
   const receiverEmail = getReceiver(chat.users, user)
+
+  const scrollBelow = () => [
+    chatBottomRef.current.scrollIntoView({
+      behavior: 'smooth',
+      block: 'start'
+    })
+  ]
 
   const sendMessage = e => {
     e.preventDefault()
@@ -53,8 +68,30 @@ function Feed ({ chat, messages }) {
         photoURL: user.photoURL
       })
     setMessage('')
+    scrollBelow()
   }
 
+  const showChat = () => {
+    if (messageSnapshot) {
+      return messageSnapshot.docs.map(message => (
+        <Message
+          key={message.id}
+          user={message.data().user}
+          message={{
+            ...message.data(),
+            timestamp: message
+              .data()
+              .timestamp?.toDate()
+              .getTime()
+          }}
+        />
+      ))
+    } else {
+      return JSON.parse(messages).map(message => (
+        <Message key={message.id} user={message.user} message={message} />
+      ))
+    }
+  }
   return (
     <div>
       <header
@@ -77,7 +114,6 @@ function Feed ({ chat, messages }) {
           className='
           text-blue-300 
           h-12 
-          lg:hidden 
           cursor-pointer'
         />
         {receiver ? (
@@ -126,8 +162,17 @@ function Feed ({ chat, messages }) {
           {receiverEmail}
         </h2>
       </header>
-      <div className='h-[90vh] p-[20px]'>
-        <div></div>
+      <div
+        className='
+      h-[90vh]
+      overflow-y-scroll
+      scrollbar-hide
+      p-[20px]'
+      >
+        <div>
+          {showChat()}
+          <div className='mb-[30px]' ref={chatBottomRef} />
+        </div>
       </div>
       <footer
         className='
@@ -145,7 +190,7 @@ function Feed ({ chat, messages }) {
             '
       >
         <EmojiHappyIcon className='chatIcon' />
-        <div
+        <form
           className='
           space-x-2
           px-4
@@ -190,7 +235,7 @@ function Feed ({ chat, messages }) {
       hover:text-blue-300
       cursor-pointer'
           />
-        </div>
+        </form>
         <PhotographIcon className='chatIcon' />
         <CashIcon className='chatIcon' />
       </footer>

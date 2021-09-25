@@ -17,7 +17,7 @@ function ChatArea ({ chat, messages }) {
         overflow-hidden
         '
     >
-      <div className='hidden lg:inline-flex'>
+      <div className='hidden'>
         <Sidebar />
       </div>
       <main
@@ -26,7 +26,7 @@ function ChatArea ({ chat, messages }) {
             scrollbar-hide
             '
       >
-        <Feed chat={chat} />
+        <Feed chat={chat} messages={messages} />
       </main>
     </div>
   )
