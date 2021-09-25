@@ -64,7 +64,7 @@ function SearchHeader () {
     lg:py-5 
     lg:px-6
     space-x-3
-    lg:justify-evenly
+    sm:justify-evenly
     border-b-2 
     border-gray-600'
     >
