@@ -70,6 +70,8 @@ function SearchHeader () {
         <h1
           onClick={() => router.push('/')}
           className='
+          hidden
+          lg:inline-flex
       text-blue-200
       font-bold
       text-lg
@@ -82,6 +84,10 @@ function SearchHeader () {
         >
           SearchAlpha
         </h1>
+        <div onClick={() => router.push('/')} className='lg:hidden searchLinks'>
+          <SearchIcon className='linkIcon' />
+          <h2 className='linkTitle'>Home</h2>
+        </div>
       </div>
       <div className='flex-col flex-shrink lg:flex-grow space-y-3'>
         <form
@@ -144,10 +150,6 @@ function SearchHeader () {
       text-white 
       space-x-4'
       >
-        <div onClick={() => router.push('/')} className='searchLinks'>
-          <SearchIcon className='linkIcon' />
-          <h2 className='linkTitle'>Home</h2>
-        </div>
         <div className='searchLinks'>
           <MailIcon className='linkIcon' />
           <h2 className='linkTitle'>Mail</h2>
