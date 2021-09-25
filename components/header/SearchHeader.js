@@ -61,7 +61,8 @@ function SearchHeader () {
     items-center 
     py-5 
     px-6
-    justify-evenly 
+    space-x-5
+    lg:justify-evenly
     border-b-2 
     border-gray-600'
     >
@@ -109,7 +110,7 @@ function SearchHeader () {
           <input
             type='text'
             ref={searchInputRef}
-            className='flex-grow border-0 outline-none bg-transparent'
+            className='w-[120px] sm:flex-grow border-0 outline-none bg-transparent'
           />
           <button onClick={search} hidden type='submit' className=''>
             Search
