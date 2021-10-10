@@ -3,7 +3,7 @@ import { DocumentReportIcon, ViewGridIcon } from '@heroicons/react/solid'
 import {
   ShoppingCartIcon,
   ChatIcon,
-  PhotographIcon
+  DocumentTextIcon
 } from '@heroicons/react/outline'
 //modal testing
 
@@ -64,9 +64,11 @@ function Header () {
           <h1 className='link hidden md:inline-flex'>Chat</h1>
           <ChatIcon className='headerIcons' />
         </div>
-        <h1 className='link hidden md:inline-flex'>Images</h1>
-        <PhotographIcon className='headerIcons' />
-        <ViewGridIcon className='h-6 md:h-10 cursor-pointer rounded-full hover:bg-gray-500' />
+        <div onClick={() => router.push('/docs')}>
+          <h1 className='link hidden md:inline-flex'>Docs</h1>
+          <DocumentTextIcon className='headerIcons' />
+        </div>
+        <ViewGridIcon className='h-6 md:h-10 cursor-pointer rounded-full hover:bg-gray-500 hidden' />
 
         {!user ? (
           <button
