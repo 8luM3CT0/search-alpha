@@ -114,4 +114,22 @@
       cursor-pointer
       lg:hidden
    }
+
+   .docsDiv{
+      @apply bg-gray-800 h-screen overflow-y-scroll scrollbar-hide
+   }
+
+   .docHeaderInput{
+      @apply
+      hidden
+      flex-grow
+      lg:inline-flex 
+      mx-auto
+      bg-gray-600 
+      h-16 
+      rounded-lg 
+      items-center 
+      space-x-8 
+      px-5
+   }
 }  

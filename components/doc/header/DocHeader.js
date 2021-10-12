@@ -54,21 +54,7 @@ function DocHeader () {
         </h1>
       </div>
       {/**docs searchbar */}
-      <div
-        className='
-       max-w-sm 
-      md:max-w-3xl
-        lg:max-w-[1300px]
-      flex-grow
-      flex 
-      mx-auto
-      bg-gray-600 
-      h-16 
-      rounded-lg 
-      items-center 
-      space-x-8 
-      px-5'
-      >
+      <div className='docHeaderInput'>
         <input
           type='text'
           placeholder='Search Docs...'

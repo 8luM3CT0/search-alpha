@@ -11,10 +11,69 @@ import { PlusIcon } from '@heroicons/react/outline'
 import documents from '../public/documents.json'
 import DocumentRow from '../components/doc/body/DocumentRow'
 //back-end
+import { useState } from 'react'
+import firebase from 'firebase'
+import { userCreds, store } from '../firebase'
+import { useAuthState } from 'react-firebase-hooks/auth'
+import { useCollectionOnce } from 'react-firebase-hooks/firestore'
 
 function Docs () {
+  const [showModal, setShowModal] = useState(false)
+  const [input, setInput] = useState('')
+  const [user] = useAuthState(userCreds)
+  const [docsSnapshot] = useCollectionOnce(
+    store
+      .collection('userDocs')
+      .doc(user.email)
+      .collection('docs')
+      .orderBy('timestamp', 'desc')
+  )
+
+  const createDocument = () => {
+    if (!input) return
+
+    store
+      .collection('userDocs')
+      .doc(user.email)
+      .collection('docs')
+      .add({
+        filename: input,
+        timestamp: firebase.firestore.FieldValue.serverTimestamp()
+      })
+    setInput('')
+    setShowModal(false)
+  }
+
+  const modal = (
+    <Modal size='sm' active={showModal} toggler={() => setShowModal(false)}>
+      <ModalBody>
+        <input
+          type='text'
+          value={input}
+          onChange={e => setInput(e.target.value)}
+          className='outline-none w-full'
+          placeholder='Type in the name of your document: '
+          onKeyDown={e => e.key === 'Enter' && createDocument()}
+        />
+      </ModalBody>
+      <ModalFooter>
+        <Button
+          color='blue'
+          buttonType='link'
+          onClick={e => setShowModal(false)}
+          ripple='light'
+        >
+          Cancel
+        </Button>
+        <Button color='blue' onClick={createDocument} ripple='dark'>
+          Create
+        </Button>
+      </ModalFooter>
+    </Modal>
+  )
+
   return (
-    <div className='bg-gray-800 h-screen overflow-y-scroll scrollbar-hide'>
+    <div className='docsDiv'>
       <Head>
         <title>Docs-Alpha</title>
         <link
@@ -27,6 +86,7 @@ function Docs () {
         />
       </Head>
       <DocHeader />
+      {modal}
       <section className='bg-gray-800 pb-10 px-10'>
         <div className='max-w-3xl mx-auto'>
           <div className='py-6 flex items-center justify-between'>
@@ -42,6 +102,7 @@ function Docs () {
           </div>
           <div>
             <div
+              onClick={() => setShowModal(true)}
               className='
             grid
             place-items-center
@@ -68,12 +129,12 @@ function Docs () {
             <p className='mr-12 text-blue-100'>Date created</p>
             <Icon name='folder' size='3xl' color='white' />
           </div>
-          {documents.map(({ id, filename, timestamp }) => (
+          {docsSnapshot?.docs.map(doc => (
             <DocumentRow
-              key={id}
-              id={id}
-              filename={filename}
-              timestamp={timestamp}
+              key={doc.id}
+              id={doc.id}
+              filename={doc.data().filename}
+              timestamp={doc.data().timestamp}
             />
           ))}
         </div>

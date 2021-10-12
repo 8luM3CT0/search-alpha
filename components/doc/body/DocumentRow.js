@@ -27,7 +27,7 @@ function DocumentRow ({ id, filename, timestamp }) {
       >
         {filename}
       </p>
-      <p className='pr-5 text-sm'>{timestamp}</p>
+      <p className='pr-5 text-sm'>{timestamp?.toDate().toLocaleDateString()}</p>
       <Button
         color='blue'
         buttonType='outline'
