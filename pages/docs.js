@@ -8,6 +8,8 @@ import Modal from '@material-tailwind/react/Modal'
 import ModalBody from '@material-tailwind/react/ModalBody'
 import ModalFooter from '@material-tailwind/react/ModalFooter'
 import { PlusIcon } from '@heroicons/react/outline'
+import documents from '../public/documents.json'
+import DocumentRow from '../components/doc/body/DocumentRow'
 //back-end
 
 function Docs () {
@@ -25,7 +27,7 @@ function Docs () {
         />
       </Head>
       <DocHeader />
-      <section className='bg-gray-700 pb-10 px-10'>
+      <section className='bg-gray-800 pb-10 px-10'>
         <div className='max-w-3xl mx-auto'>
           <div className='py-6 flex items-center justify-between'>
             <h2 className='text-gray-100 text-lg'>Add a new document</h2>
@@ -57,6 +59,23 @@ function Docs () {
               Blank
             </p>
           </div>
+        </div>
+      </section>
+      <section className='bg-gray-600 px-10 md:px-0'>
+        <div className='max-w-3xl mx-auto py-8 text-sm text-blue-200'>
+          <div className='flex items-center justify-between pb-5'>
+            <h2 className='font-medium flex-grow text-blue-300'>Your files</h2>
+            <p className='mr-12 text-blue-100'>Date created</p>
+            <Icon name='folder' size='3xl' color='white' />
+          </div>
+          {documents.map(({ id, filename, timestamp }) => (
+            <DocumentRow
+              key={id}
+              id={id}
+              filename={filename}
+              timestamp={timestamp}
+            />
+          ))}
         </div>
       </section>
     </div>

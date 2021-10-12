@@ -17,7 +17,7 @@ function DocHeader () {
   return (
     <header
       className='
-    bg-gray-700 
+    bg-gray-800 
     z-50 sticky 
     top-0 
     py-4 
@@ -86,11 +86,11 @@ function DocHeader () {
       {/**docs icons */}
       <div className='flex items-center space-x-4'>
         <div onClick={() => router.push('/')}>
-          <h1 className='link hidden md:inline-flex text-gray-100'>Search</h1>
+          <h1 className='link text-gray-100'>Search</h1>
           <SearchCircleIcon className='headerIcons text-blue-200' />
         </div>
         <div onClick={() => router.push('/chat')}>
-          <h1 className='link hidden md:inline-flex text-gray-100'>Chat</h1>
+          <h1 className='link text-gray-100'>Chat</h1>
           <ChatIcon className='headerIcons text-blue-200' />
         </div>
         <img

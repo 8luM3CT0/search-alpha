@@ -33,7 +33,9 @@
    }
 
    .link{
-    @apply 
+    @apply
+    hidden
+    md:inline-flex 
     text-lg
     cursor-pointer 
     hover:underline
