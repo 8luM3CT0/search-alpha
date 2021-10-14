@@ -45,7 +45,7 @@ function Sidebar () {
         flex-1
         h-screen
         flex-col
-        bg-gray-700
+        bg-gray-800
         lg:min-w-[330px]
         lg:max-w-[460px]
         border-r-2
@@ -62,7 +62,7 @@ function Sidebar () {
             items-center
             space-x-3
             py-3
-            bg-gray-700
+            bg-gray-800
             px-3
             border-b-2
             border-blue-300

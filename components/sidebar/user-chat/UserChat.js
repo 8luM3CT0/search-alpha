@@ -30,7 +30,7 @@ function UserChat ({ id, users }) {
         rounded-full
         cursor-pointer
         justify-evenly
-        bg-gray-700
+        bg-gray-800
         hover:bg-gray-600
         '
     >

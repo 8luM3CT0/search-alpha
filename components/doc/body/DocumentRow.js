@@ -2,10 +2,18 @@
 import Button from '@material-tailwind/react/Button'
 import Icon from '@material-tailwind/react/Icon'
 //back-end
+import { useRouter } from 'next/router'
 
 function DocumentRow ({ id, filename, timestamp }) {
+  const router = useRouter()
+
+  const goToDoc = () => {
+    router.push(`/document/${id}`)
+  }
+
   return (
     <div
+      onClick={goToDoc}
       className='
     flex 
     items-center 

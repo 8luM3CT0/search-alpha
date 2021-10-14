@@ -70,21 +70,7 @@ function SearchHeader () {
     >
       <div className='flex items-center lg:mr-4'>
         {/**logo */}
-        <h1
-          onClick={() => router.push('/')}
-          className='
-          hidden
-          lg:inline-flex
-      text-blue-200
-      font-bold
-      text-lg
-      lg:text-2xl
-      font-google-sans
-      cursor-pointer
-      underline
-      animate-pulse
-      '
-        >
+        <h1 onClick={() => router.push('/')} className='searchHomeBtn'>
           SearchAlpha
         </h1>
         <div onClick={() => router.push('/')} className='lg:hidden searchLinks'>

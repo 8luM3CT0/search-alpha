@@ -127,7 +127,7 @@ function Docs () {
           <div className='flex items-center justify-between pb-5'>
             <h2 className='font-medium flex-grow text-blue-300'>Your files</h2>
             <p className='mr-12 text-blue-100'>Date created</p>
-            <Icon name='folder' size='3xl' color='white' />
+            <Icon name='folder' size='3xl' color='lightblue' />
           </div>
           {docsSnapshot?.docs.map(doc => (
             <DocumentRow

@@ -71,6 +71,19 @@
       hover:shadow-md
    }
 
+   .searchHomeBtn{
+      @apply
+      hidden
+      lg:inline-flex
+   text-blue-200
+      font-bold
+      text-lg
+      lg:text-2xl
+      font-google-sans
+      cursor-pointer
+      underline
+      animate-pulse
+   }
    .searchLinks{
       @apply
       flex 
@@ -131,5 +144,30 @@
       items-center 
       space-x-8 
       px-5
+   }
+
+   .documentHeader{
+      @apply
+      flex
+      items-center
+      justify-between
+      p-3
+      pb-3
+      shadow-lg
+      top-0
+      z-50
+      sticky
+      bg-gray-600
+   }
+
+   .docOption{
+      @apply
+      cursor-pointer
+      hover:bg-gray-500
+      p-2
+      transition
+      duration-200
+      ease-out
+      rounded-lg
    }
 }  

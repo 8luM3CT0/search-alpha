@@ -48,9 +48,9 @@ function Header () {
       space-x-4
       '
       >
-        <h1 className='link hidden md:inline-flex'>About</h1>
+        <h1 className='link'>About</h1>
         <DocumentReportIcon className='headerIcons' />
-        <h1 className='link hidden md:inline-flex'>Store</h1>
+        <h1 className='link'>Store</h1>
         <ShoppingCartIcon className='headerIcons' />
       </div>
       <div
@@ -61,11 +61,11 @@ function Header () {
       space-x-4'
       >
         <div onClick={() => router.push('/chat')}>
-          <h1 className='link hidden md:inline-flex'>Chat</h1>
+          <h1 className='link'>Chat</h1>
           <ChatIcon className='headerIcons' />
         </div>
         <div onClick={() => router.push('/docs')}>
-          <h1 className='link hidden md:inline-flex'>Docs</h1>
+          <h1 className='link'>Docs</h1>
           <DocumentTextIcon className='headerIcons' />
         </div>
         <ViewGridIcon className='h-6 md:h-10 cursor-pointer rounded-full hover:bg-gray-500 hidden' />

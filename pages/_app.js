@@ -1,5 +1,6 @@
 import '../styles/globals.css'
 import 'tailwindcss/tailwind.css'
+import '@material-tailwind/react/tailwind.css'
 import 'react-dropdown/style.css'
 import Router from 'next/router'
 import ProgressBar from '@badrap/bar-of-progress'
@@ -41,7 +42,15 @@ function MyApp ({ Component, pageProps }) {
 
   if (!user) return <Home />
 
-  return <Component {...pageProps} />
+  return (
+    <>
+      <link
+        rel='stylesheet'
+        href='https://fonts.googleapis.com/icon?family=Material+Icons'
+      />
+      <Component {...pageProps} />
+    </>
+  )
 }
 
 export default MyApp
