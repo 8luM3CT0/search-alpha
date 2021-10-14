@@ -2,6 +2,7 @@
 import Button from '@material-tailwind/react/Button'
 import Icon from '@material-tailwind/react/Icon'
 import { DocumentTextIcon } from '@heroicons/react/outline'
+import DocEditor from '../../components/doc/doc-editor/DocEditor'
 //back-end
 import { userCreds, store } from '../../firebase'
 import { useRouter } from 'next/router'
@@ -25,7 +26,7 @@ function Document () {
   }
 
   return (
-    <div className='h-screen bg-gray-800'>
+    <div className='h-screen bg-gray-800 overflow-y-scroll scrollbar-hide'>
       <header className='documentHeader'>
         <span onClick={() => router.push('/docs')} className='cursor-pointer'>
           <DocumentTextIcon className='h-10 text-blue-200 cursor-pointer' />
@@ -68,6 +69,7 @@ function Document () {
         ml-2'
         />
       </header>
+      <DocEditor />
     </div>
   )
 }
